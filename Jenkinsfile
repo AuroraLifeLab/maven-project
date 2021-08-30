@@ -1,22 +1,16 @@
-pipeline {
+pipeline{
     agent any
     tools{
-        maven 'local maven'
+       maven 'local maven'
     }
     stages{
-        stage('Build'){
-            steps {
+        stage('build'){
+            steps{
                 sh 'mvn clean package'
             }
-            post {
-                success {
-                    echo 'start to save files'
-                    archiveArtifacts artifacts: '**/target/*.war'
-
-                }
-
-            }
         }
-
     }
+
+
+
 }
